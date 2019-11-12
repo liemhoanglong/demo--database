@@ -5,40 +5,58 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 //2.connect
-mongoose.connect('mongodb://localhost/demo-express');
+if (mongoose.connect('mongodb://localhost/demo-express')) {
+	console.log('connect to database');
+};
+
 
 //3.tạo Schema
 var BlogDataSchema = new mongoose.Schema({
 	title: String,
 	content: String,
-  date: Date,
-  writter: String,
-  tag: String 
+	date: Date,
+	writter: String,
+	tag: String
 }, { collection: 'BlogData' });
 
 //4.tạo model
 var BlogData = mongoose.model('BlogData', BlogDataSchema);
 
+
+var UserDataSchema = new mongoose.Schema({
+	username: String,
+	password: String,
+	email: String,
+	gender: String,
+	datebirth: Date,
+	address: String,
+	phone: String,
+	numBlogs: Number,
+	numCmts: Number
+}, { collection: 'UserData' });
+var UserData = mongoose.model('UserData', UserDataSchema);
+
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+	res.render('index', { title: 'Express' });
 });
 
-router.get('/blog', function(req, res, next) {
-  res.render('blog');
+router.get('/blog', function (req, res, next) {
+	res.render('blog');
 });
 
-router.get('/login', function(req, res, next) {
-  res.render('pages/login',{layout:false});
+router.get('/login', function (req, res, next) {
+	res.render('pages/login', { layout: false });
 });
-router.get('/forget-pass', function(req, res, next) {
-  res.render('pages/forget-pass',{layout:false});
+router.get('/forget-pass', function (req, res, next) {
+	res.render('pages/forget-pass', { layout: false });
 });
-router.get('/register', function(req, res, next) {
-  res.render('pages/register',{layout:false});
+router.get('/register', function (req, res, next) {
+	res.render('pages/register', { layout: false });
 });
-router.get('/write-blog', function(req, res, next) {
-  res.render('write-blog');
+router.get('/write-blog', function (req, res, next) {
+	res.render('write-blog');
 });
 
 router.get('/get-data', function (req, res, next) {
@@ -47,6 +65,14 @@ router.get('/get-data', function (req, res, next) {
 			res.render('write-blog', { items: doc });
 		});
 });
+
+router.get("/:UserID", function (req, res, next) {
+	UserData.find({ username: req.params.UserID })
+		.then(function (doc) {
+			res.render('account', { item: doc });
+		});
+});
+
 
 router.post('/insert', function (req, res, next) {
 	var item = {
@@ -85,5 +111,9 @@ router.post('/delete', function (req, res, next) {
 	BlogData.findByIdAndRemove(id).exec();
 	res.redirect('/get-data');
 });
+
+// router.get('/account', function (req, res, next) {
+// 	res.render('account');
+// })
 
 module.exports = router;

@@ -1,0 +1,60 @@
+<section class="contact-section section_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="contact-title text-center">Thông tin tài khoản</h2>
+        </div>
+        <div class="col-lg-3">
+          <div class="avatar">
+              <img src="/images/avatar.png" alt="avatar">
+          </div>
+        </div>
+       {{# each item}}
+        <div class="col-lg-7 row">
+          <div class="media contact-info col-lg-6">
+            <span class="contact-info__icon"><i class="ti-home"></i></span>
+            <div class="media-body">
+              <h3>Tên đăng nhập</h3>
+              <p>   {{this.username}}   </p>
+            </div>
+          </div>
+          <div class="media contact-info col-lg-6">
+            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+            <div class="media-body">
+              <h3>Số điện thoại</h3>
+              <p>   {{this.phone}}  </p>
+            </div>
+          </div>
+          <div class="media contact-info col-lg-6">
+            <span class="contact-info__icon"><i class="ti-email"></i></span>
+            <div class="media-body">
+              <h3>Email</h3>
+              <p>   {{this.email}}  </p>
+            </div>
+          </div>
+          <div class="media contact-info col-lg-6">
+            <span class="contact-info__icon"><i class="ti-home"></i></span>
+            <div class="media-body">
+              <h3>Ngày sinh</h3>
+              <p>   {{this.datebirth}}  </p>
+            </div>
+          </div>
+          <div class="media contact-info col-lg-6">
+            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+            <div class="media-body">
+              <h3>  Giới tính </h3>
+              <p>   {{this.gender}} </p>
+            </div>
+          </div>
+          <div class="media contact-info col-lg-6">
+            <span class="contact-info__icon"><i class="ti-email"></i></span>
+            <div class="media-body">
+              <h3>  Địa chỉ     </h3>
+              <p> {{this.address}}  </p>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
