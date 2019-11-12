@@ -1,0 +1,152 @@
+
+<div class="contact-section section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h2 class="insert">Write Blog</h2>
+                <form class="form-contact contact_form" action="/insert" method="post" id="contactForm"
+                    novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="title">Title</label>                              
+                                <input class="form-control" name="title" id="title" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title'"
+                                    placeholder="Enter title">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="content">Content</label>    
+                                <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter content'"
+                                    placeholder="Enter content"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="content">Writter</label>    
+                                <input class="form-control" name="writter" id="writter" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter writter'"
+                                    placeholder="Enter writter">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="content">Date</label>    
+                                <input class="form-control" name="date" id="date" type="date"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter date'"
+                                    placeholder="Enter date">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="content">Tag</label>    
+                                <input class="form-control" name="tag" id="tag" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Tag'"
+                                    placeholder="Enter Tag">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="button button-contactForm btn_1">INSERT</button>
+                    </div>
+                </form>
+                <hr>
+                <h2 class="insert">Update Blog</h2>
+                <form class="form-contact contact_form" action="/update" method="post" id="contactForm"
+                    novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="id">ID</label>                              
+                                <input class="form-control" name="id" id="id" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter id'"
+                                    placeholder="Enter id">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="title">Title</label>                              
+                                <input class="form-control" name="title" id="title" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter title'"
+                                    placeholder="Enter title">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="content">Content</label>    
+                                <textarea class="form-control w-100" name="content" id="content" cols="30" rows="9"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter content'"
+                                    placeholder="Enter content"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="content">Writter</label>    
+                                <input class="form-control" name="writter" id="writter" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter writter'"
+                                    placeholder="Enter writter">
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="content">Date</label>    
+                                <input class="form-control" name="date" id="date" type="date"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter date'"
+                                    placeholder="Enter date">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="content">Tag</label>    
+                                <input class="form-control" name="tag" id="tag" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Tag'"
+                                    placeholder="Enter Tag">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="button button-contactForm btn_1">INSERT</button>
+                    </div>
+                </form>
+                <hr>
+                <h2 class="insert">Delete Blog</h2>
+                <form class="form-contact contact_form" action="/delete" method="post" id="contactForm"
+                    novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="id">ID</label>                              
+                                <input class="form-control" name="id" id="id" type="text"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter id'"
+                                    placeholder="Enter id">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="button button-contactForm btn_1">Dalete</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-8">
+                <section class="get">
+                    <h2>Get Data</h2>
+                    <a class="btn_1" href="/get-data">LOAD DATA</a>
+                    <hr>
+                        {{# each items }}
+                        <article class="item">
+                            <div>ID: {{ this._id }} </div>
+                            <div>Title: {{ this.title }} </div>
+                            <div>Content: {{{ this.content }}} </div>
+                            <div>Writter: {{ this.writter }} </div>
+                            <div>Date: {{ this.date }} </div>
+                            <div>Tag: {{ this.tag }} </div>
+                        </article>
+                        <hr>
+                        {{/each}}
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
